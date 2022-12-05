@@ -40,19 +40,8 @@ class CalorieCount:
 
         #@# ~~> Return the biggest calorie <~~ #@#
         return max_cal
-            
-
-
-            # for calories in inp:
-            #     if (calories == '\n'):
-            #         if (sum > big_calorie):
-            #             big_calorie = sum
-            #         sum = 0
-            #     else:
-            #         sum += int(calories.strip("\n"))
-
-        # return big_calorie
                     
+
 
 if __name__ == '__main__':
     calorie = CalorieCount(dir_path)
