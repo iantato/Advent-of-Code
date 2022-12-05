@@ -5,6 +5,7 @@ Rucksack Reorganization
 
 '''
 import os
+import string
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -12,20 +13,26 @@ class Rucksack:
 
     def __init__(self, path : str) -> None:
         self.path = path
-        
-        self.init_file()
+
+        self._init_file()
 
     
-    def init_file(self) -> list:
+    def _init_file(self) -> list:
         with open(self.path + "\\input.txt", 'r') as file:
-            self.inp = file.readlines()
+            self._inp = [comp.strip('\n') for comp in file.readlines()]
 
 
-    def compare(self) -> None:
-        print(self.inp)
+    def compare(self) -> int:
+        
+        order = dict(list(zip(list(string.ascii_letters), [num for num in range(1, 53)])))
+        sum = 0
 
+        for rucksack in self._inp:
 
+            priority = tuple(set([let for let in rucksack[: len(rucksack) // 2]]).intersection([let for let in rucksack[len(rucksack) // 2:]]))
+            sum += order[priority[0]]
 
+        return sum
 
 
 if __name__ == '__main__':
