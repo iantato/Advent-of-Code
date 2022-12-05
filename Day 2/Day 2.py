@@ -37,18 +37,18 @@ class RPS_GameScore:
             #@# ~~> Create a list of tuples where each games are stored <~~ #@#
             inp = [tuple(num.replace('\n', '').replace(' ', '')) for num in inp.readlines()]
 
-        #@# ~~> FOR loop to calculate the total score <~~ #@#
-        #@# ~~> Draw = 3, Win = 6, Lose = 0
-        for game in inp:
-            if (game in self.encrypted_strat['Draw']):
-                score += 3 + equivalent[game[1]]
-            elif (game in self.encrypted_strat['Win']):
-                score += 6 + equivalent[game[1]]
-            else:
-                score += equivalent[game[1]]
+            #@# ~~> FOR loop to calculate the total score <~~ #@#
+            #@# ~~> Draw = 3, Win = 6, Lose = 0
+            for game in inp:
+                if (game in self.encrypted_strat['Draw']):
+                    score += 3 + equivalent[game[1]]
+                elif (game in self.encrypted_strat['Win']):
+                    score += 6 + equivalent[game[1]]
+                else:
+                    score += equivalent[game[1]]
 
-        #@# ~~> Return the total score <~~ #@#
-        return score
+            #@# ~~> Return the total score <~~ #@#
+            return score
 
 
 
