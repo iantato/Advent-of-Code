@@ -10,6 +10,9 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 class RPS_GameScore:
 
+    #################################################
+    ### INITIALIZATION
+    #################################################
     def __init__(self, path : str) -> None:
         self.path = path
         
@@ -20,7 +23,23 @@ class RPS_GameScore:
                                     'Lose' : (('B', 'X'), ('C', 'Y'), ('A', 'Z')),
                                     })
 
-    
+        #@# ~~> Initialize input variable <~~ #@#
+        self._init_file()
+
+
+    #################################################
+    ### OPEN FILE AND RECORD DATA
+    #################################################
+    def _init_file(self) -> list:
+
+        with open(self.path + "\\input.txt", 'r') as file:
+            #@# ~~> Create a list of tuples where each games are stored <~~ #@#
+            self._inp = [tuple(num.replace('\n', '').replace(' ', '')) for num in file.readlines()]
+
+
+    #################################################
+    ### GET TOTAL SCORE
+    #################################################
     def total_score(self) -> int:
 
         #@# ~~> Initialize Variables <~~ #@#
@@ -31,24 +50,19 @@ class RPS_GameScore:
                             'Z' : 3
                           })
         score = 0
-        
-        #@# ~~> Open File <~~ #@#
-        with open(self.path + "\\input.txt") as inp:
-            #@# ~~> Create a list of tuples where each games are stored <~~ #@#
-            inp = [tuple(num.replace('\n', '').replace(' ', '')) for num in inp.readlines()]
 
-            #@# ~~> FOR loop to calculate the total score <~~ #@#
-            #@# ~~> Draw = 3, Win = 6, Lose = 0
-            for game in inp:
-                if (game in self.encrypted_strat['Draw']):
-                    score += 3 + equivalent[game[1]]
-                elif (game in self.encrypted_strat['Win']):
-                    score += 6 + equivalent[game[1]]
-                else:
-                    score += equivalent[game[1]]
+        #@# ~~> FOR loop to calculate the total score <~~ #@#
+        #@# ~~> Draw = 3, Win = 6, Lose = 0
+        for game in self._inp:
+            if (game in self.encrypted_strat['Draw']):
+                score += 3 + equivalent[game[1]]
+            elif (game in self.encrypted_strat['Win']):
+                score += 6 + equivalent[game[1]]
+            else:
+                score += equivalent[game[1]]
 
-            #@# ~~> Return the total score <~~ #@#
-            return score
+        #@# ~~> Return the total score <~~ #@#
+        return score
 
 
 
