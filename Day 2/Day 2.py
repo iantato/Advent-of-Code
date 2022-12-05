@@ -39,13 +39,13 @@ class RPS_GameScore:
 
             #@# ~~> FOR loop to calculate the total score <~~ #@#
             #@# ~~> Draw = 3, Win = 6, Lose = 0
-        for game in inp:
-            if (game in self.encrypted_strat['Draw']):
-                score += 3 + equivalent[game[1]]
-            elif (game in self.encrypted_strat['Win']):
-                score += 6 + equivalent[game[1]]
-            else:
-                score += equivalent[game[1]]
+            for game in inp:
+                if (game in self.encrypted_strat['Draw']):
+                    score += 3 + equivalent[game[1]]
+                elif (game in self.encrypted_strat['Win']):
+                    score += 6 + equivalent[game[1]]
+                else:
+                    score += equivalent[game[1]]
 
             #@# ~~> Return the total score <~~ #@#
             return score
