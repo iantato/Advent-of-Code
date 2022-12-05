@@ -36,27 +36,48 @@ class CalorieCount:
     def count(self) -> int:
         
         #@# ~~> Initialize Variables <~~ #@#
+        s = 0
         max_cal = 0
-        sum = 0
 
         #@# ~~> FOR loop to to find which elf is carrying the largest calorie <~~ #@#
         #@# ~~> it keeps summing up the calories until the '' separator is reached
         for calorie in self._inp:
             if (calorie == ''):
                 
-                if (sum > max_cal):
-                    max_cal = sum
+                if (s > max_cal):
+                    max_cal = s
 
-                sum = 0
+                s = 0
 
             else:
-                sum += int(calorie)
+                s += int(calorie)
 
         #@# ~~> Return the biggest calorie <~~ #@#
         return max_cal
-                    
 
+    
+    #################################################
+    ### GET TOTAL OF TOP ELVES
+    #################################################
+    def top_total(self, places : int) -> list:
+        
+        #@# ~~> Initialize Variables <~~ #@#
+        s = 0
+        calories = list([])
 
-if __name__ == '__main__':
-    calorie = CalorieCount(dir_path)
-    print(calorie.count())
+        #@# ~~> FOR loop to make a list of total calories <~~ #@#
+        for calorie in self._inp:
+            if (calorie == ''):
+                
+                calories.append(s)
+                s = 0
+
+            else:
+                s += int(calorie)
+
+        #@# ~~> Arrange list <~~ #@#
+        calories.sort()
+        calories.reverse()
+
+        #@# ~~> Return the sum of calories of the top places specified <~~ #@#
+        return sum(calories[:places])
