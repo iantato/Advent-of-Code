@@ -101,8 +101,3 @@ class RPS_GameScore:
         
         #@# ~~> Return the total score <~~ #@#
         return score
-
-
-if __name__ == '__main__':
-    score = RPS_GameScore(dir_path)
-    print(score.accurate_total())
