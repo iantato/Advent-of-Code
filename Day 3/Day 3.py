@@ -81,8 +81,3 @@ class Rucksack:
 
         #@# ~~> Return the total sum of priority <~~ #@#
         return sum
-
-
-if __name__ == '__main__':
-    rucksack = Rucksack(dir_path)
-    print(rucksack.badge_total())
