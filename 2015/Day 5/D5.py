@@ -77,11 +77,12 @@ def very_nice(data) -> int:
         # Create a list out of the characters from
         # a line.
         line = [char for char in line[:-1]]
+        print(line)
         
 
 
 
-DIR = getcwd() + '\\input'
+DIR = getcwd() + '\\2015\\input'
 file = open(DIR + '\\day5.txt').readlines()
 
 print(nice(file))

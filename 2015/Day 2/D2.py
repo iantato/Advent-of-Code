@@ -62,7 +62,7 @@ def ribbon(data) -> int:
 
 
 
-DIR = getcwd() + '\\input'
+DIR = getcwd() + '\\2015\\input'
 file = open(DIR + '\\day2.txt').readlines()
 
 print(total_wrapper_paper_sqft(file))

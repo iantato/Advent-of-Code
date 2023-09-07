@@ -48,7 +48,7 @@ def basement(data) -> int:
 
 
 
-DIR = getcwd() + '\\input'
+DIR = getcwd() + '\\2015\\input'
 file = open(DIR + '\\day1.txt').read()
 
 print(get_floor_level(file))

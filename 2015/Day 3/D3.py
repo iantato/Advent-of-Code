@@ -108,7 +108,7 @@ def with_robot_visited(data) -> int:
     
         
         
-DIR = getcwd() + '\\input'
+DIR = getcwd() + '\\2015\\input'
 file = open(DIR + '\\day3.txt').read()
 
 print(visited(file))
