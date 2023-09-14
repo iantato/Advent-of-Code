@@ -74,10 +74,36 @@ def very_nice(data) -> int:
     nice = 0
     
     for line in data:
-        # Create a list out of the characters from
-        # a line.
-        line = [char for char in line[:-1]]
-        print(line)
+        
+        
+        # # --- Pair Block ---
+        pair = False
+
+        for index in range(0, len(line) - 2):
+            
+            if line[index: index + 2] in line[index + 2:]:
+                pair = True
+                break
+            
+        if not pair:
+            continue
+        # # ---
+        # # --- Middle Letter ---
+        mid = False
+        for char in range(0, len(line) - 2):
+            
+            if line[char] == line[char + 2]:
+                mid = True
+                break
+        
+        if not mid:
+            continue
+        # # ---
+
+        nice += 1
+    
+    return nice
+        
         
 
 
@@ -85,4 +111,4 @@ def very_nice(data) -> int:
 DIR = getcwd() + '\\2015\\input'
 file = open(DIR + '\\day5.txt').readlines()
 
-print(nice(file))
+print(very_nice(file))
