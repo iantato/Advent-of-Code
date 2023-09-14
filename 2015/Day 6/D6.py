@@ -93,9 +93,78 @@ def lights(instructions : list, grid : dict) -> int:
     
     return sum(lights.values())
 
+# Day 6 --- Part Two --- Probably a Fire Hazard
+def brightness(instructions : list, grid : dict) -> int:
+    
+    # Create a copy of the grid dictionary.
+    lights = grid.copy()
+    
+    for line in instructions:
+        
+        line = line[:-1].split(' ')
+        # 'toggle' or 'turn'.
+        action = line[0]
+        
+        # Check if the keyword is 'toggle' or 'turn'.
+        match action:
+            
+            case 'toggle':
+                
+                # Create a tuple with integers inside of them for the
+                # coordinates.
+                ini_coord = tuple(map(int, line[1].split(',')))
+                max_coord = tuple(map(int, line[3].split(',')))
+                
+                ini_x = ini_coord[0]
+                ini_y = ini_coord[1]
+                max_x = max_coord[0]
+                max_y = max_coord[1]
+                
+                
+                for x in range(ini_x, max_x + 1):
+                    for y in range(ini_y, max_y + 1):
+                        lights[(x, y)] += 2
+                
+            case 'turn':
+                
+                # 'on' or 'off'
+                mode = line[1]
+                
+                # Create a tuple with integers inside of them for the
+                # coordinates.
+                ini_coord = tuple(map(int, line[2].split(',')))
+                max_coord = tuple(map(int, line[4].split(',')))
+                
+                ini_x = ini_coord[0]
+                ini_y = ini_coord[1]
+                max_x = max_coord[0]
+                max_y = max_coord[1]
+                
+                # Check if you have to turn the lights 'off' or 'on'
+                match mode:
+                    
+                    case 'on':
+                        
+                        for x in range(ini_x, max_x + 1):
+                            for y in range(ini_y, max_y + 1):
+                                lights[(x, y)] += 1
+                    
+                    case 'off':
+                        
+                        for x in range(ini_x, max_x + 1):
+                            for y in range(ini_y, max_y + 1):
+                                
+                                if lights[(x, y)] > 0:
+                                    lights[(x, y)] -= 1
+                
+    return sum(lights.values())
+
 
 
 DIR = getcwd() + '\\2015\\input'
 file = open(DIR + '\\day6.txt').readlines()
 
-print(lights(file, grid(1000)))
+grid = grid(1000)
+
+print(lights(file, grid))
+print(brightness(file, grid))
