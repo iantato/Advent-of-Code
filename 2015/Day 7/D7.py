@@ -118,3 +118,6 @@ def override_wire(commands: list, override_signal: str, override_value: int, fin
 
 DIR = getcwd() + '\\2015\\input'
 file = open(DIR + '\\day7.txt').read().splitlines()
+
+print(find_signal(file, 'a'))
+print(override_wire(file, 'b', find_signal(file, 'a'), 'a'))
