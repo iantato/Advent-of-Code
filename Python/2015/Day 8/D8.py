@@ -30,12 +30,12 @@ def encoded_space(items : list):
     for item in items:
         total_len += item.count('"') + item.count('\\') + 2
         
-    print(total_len)
+    return total_len
 
 
 
 DIR = getcwd() + '\\2015\\input'
 file = open(DIR + '\\day8.txt').read().splitlines()
 
-# print(calc_space(file))
+print(calc_space(file))
 print(encoded_space(file))
