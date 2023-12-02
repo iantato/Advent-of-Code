@@ -87,7 +87,7 @@ import re
 
 class Cube:
     
-    def __init__(self, input = str) -> None:
+    def __init__(self, input: str) -> None:
         self.input = open(input).read().splitlines()
     
     # == Part One ==>
