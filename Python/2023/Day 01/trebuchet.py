@@ -88,21 +88,21 @@ class Trebuchet:
     def number_calibration(self) -> int:
         
         # Initialize the sum of all of the calibration values.
-        sum = 0
+        calib_val = 0
         
         for line in self.input:
             # Remove all the characters in the string. Keep only the integers
             # because we only need the digits.
             line = line.translate({ord(i): "" for i in string.ascii_lowercase})
-            sum += int(line[0] + line[len(line) - 1])
+            calib_val += int(line[0] + line[len(line) - 1])
         
-        return sum
+        return calib_val
     
     # == Part Two ==>
     def string_calibration(self) -> int:
         
         # Initialize the sum of all of the calibration values.
-        sum = 0
+        calib_val = 0
         
         for line in self.input:
             
@@ -113,6 +113,6 @@ class Trebuchet:
             # Remove all the characters in the string. Keep only the integers
             # because we only need the digits.
             line = line.translate({ord(i): "" for i in string.ascii_lowercase})
-            sum += int(line[0] + line[len(line) - 1])
+            calib_val += int(line[0] + line[len(line) - 1])
             
-        return sum
+        return calib_val

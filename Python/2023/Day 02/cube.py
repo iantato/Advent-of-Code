@@ -96,7 +96,7 @@ class Cube:
     def check_possibility(self, r: int, b: int, g: int) -> int:
         
         # Initialize the sum of the possible Game IDs
-        sum = 0
+        total_id = 0
         
         for i in self.input:
             # Uses RegEx to split the string with multiple delimiters which are:
@@ -124,15 +124,15 @@ class Cube:
                             possible = False
             
             if possible: 
-                sum += int(results[0].split(' ')[1])
+                total_id += int(results[0].split(' ')[1])
                 
-        return sum
+        return total_id
     
     # == Part Two ==>
     def lowest_cubes(self) -> int:
         
         # Initialize the sum of the power of a set of cubes.
-        sum = 0
+        total_cube = 0
         
         for i in self.input:
             # Uses RegEx to split the string with multiple delimiters which are:
@@ -162,6 +162,6 @@ class Cube:
                         if int(number) > cubes['green']:
                             cubes['green'] = int(number)
             
-            sum += cubes['red'] * cubes['blue'] * cubes['green']
+            total_cube += cubes['red'] * cubes['blue'] * cubes['green']
         
-        return sum
+        return total_cube
