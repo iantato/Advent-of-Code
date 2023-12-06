@@ -85,8 +85,6 @@ What is the sum of all of the gear ratios in your engine schematic?
 
 '''
 
-import os
-
 class Gondola:
     
     def __init__(self, data: str) -> None:
@@ -267,10 +265,3 @@ class Gondola:
                         out += gears[0] * gears[1]
     
         return out
-                        
-                    
-    
-
-
-gears = Gondola(os.getcwd() + '\\Day 03\\input.txt')
-print(gears.gear_ratio())
